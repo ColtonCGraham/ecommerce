@@ -5,7 +5,6 @@ class CreateAccounts < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :postalCode
       t.string :creditCard
-      t.string :address
       t.boolean :isAdmin
       t.string :password
 
