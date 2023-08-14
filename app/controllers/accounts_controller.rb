@@ -67,4 +67,6 @@ class AccountsController < ApplicationController
     def account_params
       params.require(:account).permit(:name, :address, :postalCode, :creditCard, :isAdmin, :password)
     end
+
+
 end

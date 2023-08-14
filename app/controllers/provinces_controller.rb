@@ -13,6 +13,7 @@ class ProvincesController < ApplicationController
   # GET /provinces/new
   def new
     @province = Province.new
+    @province.accounts.build
   end
 
   # GET /provinces/1/edit
@@ -65,6 +66,6 @@ class ProvincesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def province_params
-      params.require(:province).permit(:name, :abbreviation, :salesTax)
+      params.require(:province).permit(:name, :abbreviation, :salesTax, accounts_attributes:[:name, :address, :postalCode,:password])
     end
 end

@@ -1,9 +1,35 @@
 <h1>Sign Up</h1>
 
-<%=form_with model: @user, url:sign_up_path do |form|%>
-<div>
-<%= form.text_field :name%>
-<%= form.password_field :password%>
-<%= form.text_field :address%>
-<%= form.text_field :postalCode%>
-<%end%>
+<%= form_for :province do |f| %>
+  <div class ="m-3">
+<%= f.label "Province:"%>
+<%= f.select :provinceId, Province.all.collect{|p| [p.abbreviation, p.id]}%>
+
+</div>
+   <%= f.fields_for :account do |account| %>
+<div class ="m-3">
+<%= account.label "Username:"%>
+<%= account.text_field :name, class:"form-control" , placeholder: "Enter Username..."%>
+</div>
+<div class ="m-3">
+<%= account.label "Password:"%>
+<%= account.password_field :password,class: "form-control", placeholder: "Enter Password..."%>
+</div>
+<div class ="m-3">
+<%= account.label "Address:"%>
+<%= account.text_field :address,class: "form-control", placeholder: "Enter Password..."%>
+</div>
+<div class ="m-3">
+<%= account.label "Postal Code:"%>
+<%= account.text_field :postalCode, class:"form-control", placeholder: "Enter Postal Code..."%>
+</div>
+   <% end %>
+
+
+<div class ="m-3">
+<%= f.submit "Sign Up!", class: "btn btn-primary" %>
+</div>
+<% end %>
+
+
+
