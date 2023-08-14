@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-
+    flash.clear
     p = Province.find(params.dig(:province, :provinceId))
 
     accDetails = params.dig(:province,:account)
@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
     if(@account.save)
       redirect_to root_path, notice: "Success! Account receipt has been e-mailed."
     else
-      flash[:alert] = "something went wrong, please verify information..."
+      flash[:alert] = "Something went wrong, please correct the following..."
       render :new
     end
 
