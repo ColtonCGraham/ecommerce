@@ -1,18 +1,22 @@
 class RegistrationsController < ApplicationController
 
+  def new
+    @account = Account.new
+  end
 
   def create
 
     p = Province.find(params.dig(:province, :provinceId))
 
     accDetails = params.dig(:province,:account)
-    acc = Account.new(name: accDetails[:name], postalCode: accDetails[:postalCode], province: p)
-    p.accounts << acc
+    @account = Account.new(name: accDetails[:name], postalCode: accDetails[:postalCode], province: p)
+    p.accounts << @account
 
-    if(acc.save)
+    if(@account.save)
       redirect_to root_path, notice: "Success! Account receipt has been e-mailed."
     else
       flash[:alert] = "something went wrong, please verify information..."
+      render :new
     end
 
 

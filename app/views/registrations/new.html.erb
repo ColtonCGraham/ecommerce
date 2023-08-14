@@ -1,12 +1,16 @@
 <h1>Sign Up</h1>
 
 <%= form_for :province do |f| %>
-  <div class ="m-3">
-<%= f.label "Province:"%>
-<%= f.select :provinceId, Province.all.collect{|p| [p.abbreviation, p.id]}%>
-
+<% if@account.errors.any?%>
+<div class = "alert alert-danger">
+<%@account.errors.full_messages.each do |message| %>
+<div><%=message %></div>
+<%end%>
 </div>
-   <%= f.fields_for :account do |account| %>
+<%end%>
+
+
+<%= f.fields_for :account do |account| %>
 <div class ="m-3">
 <%= account.label "Username:"%>
 <%= account.text_field :name, class:"form-control" , placeholder: "Enter Username..."%>
@@ -25,7 +29,11 @@
 </div>
    <% end %>
 
+  <div class ="m-3">
+<%= f.label "Province:"%>
+<%= f.select :provinceId, Province.all.collect{|p| [p.abbreviation, p.id]}%>
 
+</div>
 <div class ="m-3">
 <%= f.submit "Sign Up!", class: "btn btn-primary" %>
 </div>
