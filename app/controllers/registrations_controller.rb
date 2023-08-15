@@ -13,6 +13,7 @@ class RegistrationsController < ApplicationController
     p.accounts << @account
 
     if(@account.save)
+      session[:accountId] = @account.id
       redirect_to root_path, notice: "Success! Account receipt has been e-mailed."
     else
       flash[:alert] = "Something went wrong, please correct the following..."
