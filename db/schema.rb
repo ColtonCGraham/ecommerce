@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_065818) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_062314) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_065818) do
     t.string "content_type"
     t.text "metadata"
     t.string "service_name", null: false
-    t.bigint "byte_size", null: false
+    t.integer "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -118,7 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_065818) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sale_id", null: false
+    t.integer "sale_id"
     t.index ["sale_id"], name: "index_products_on_sale_id"
   end
 

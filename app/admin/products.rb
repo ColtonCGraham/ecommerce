@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :basePrice, :description, :sale_id
+   permit_params :name, :basePrice, :description,:image, pictures:[]
   #
   # or
   #
@@ -22,7 +22,8 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :basePrice
       f.input :description
-      f.input :image, as: :file
+      f.input :image, as: :file,multiple: true
+      f.file_field :pictures, as: :file, multiple: true
       f.actions
     end
   end
@@ -34,6 +35,9 @@ ActiveAdmin.register Product do
       row :description
       row :image do |ad|
         image_tag url_for(ad.image)
+      end
+      row :pictures do |pic|
+        image_tag url_for(pic.image)
       end
     end
   end
