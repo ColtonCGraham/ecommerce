@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = Account.find_by(name: params[:name])
-
-    if user.present? && user.password == params[:password]
+    user = Account.find_by(name: params[:name], password: params[:password])
+    if user.present?
+      puts user.password
       session[:accountId] = user.id
       redirect_to root_path, notice: "Logged in successfully."
     else
-      flash[:alert] = "Invalid email or password"
+      flash.now[:alert] = "Invalid email or password"
       render :new
     end
   end
