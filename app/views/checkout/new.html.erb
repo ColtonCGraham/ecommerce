@@ -54,9 +54,8 @@
                         <div class="invalid-feedback"> Valid first name is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                        <div class="invalid-feedback"> Valid last name is required. </div>
+                        <label for="lastName">Last name <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="">
                     </div>
                 </div>
 
@@ -100,8 +99,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">Expiration (MM/YYYY)</label>
+                        <label for="cc-expiration">Expiration</label>
                         <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                        <small class="text-muted">(MM/YYYY)</small>
                         <div class="invalid-feedback"> Expiration date required </div>
                     </div>
                     <div class="col-md-3 mb-3">

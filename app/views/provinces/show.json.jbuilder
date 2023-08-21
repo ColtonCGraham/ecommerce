@@ -1,1 +1,3 @@
-json.partial! "provinces/province", province: @province
+# frozen_string_literal: true
+
+json.partial! 'provinces/province', province: @province

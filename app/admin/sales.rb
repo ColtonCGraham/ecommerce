@@ -1,11 +1,12 @@
-ActiveAdmin.register Sale do
+# frozen_string_literal: true
 
+ActiveAdmin.register Sale do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :percentOff
+  permit_params :name, :percentOff
   #
   # or
   #
@@ -14,5 +15,4 @@ ActiveAdmin.register Sale do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
 end

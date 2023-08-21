@@ -1,45 +1,47 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class ProvincesTest < ApplicationSystemTestCase
   setup do
     @province = provinces(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit provinces_url
-    assert_selector "h1", text: "Provinces"
+    assert_selector 'h1', text: 'Provinces'
   end
 
-  test "should create province" do
+  test 'should create province' do
     visit provinces_url
-    click_on "New province"
+    click_on 'New province'
 
-    fill_in "Abbreviation", with: @province.abbreviation
-    fill_in "Name", with: @province.name
-    fill_in "Salestax", with: @province.salesTax
-    click_on "Create Province"
+    fill_in 'Abbreviation', with: @province.abbreviation
+    fill_in 'Name', with: @province.name
+    fill_in 'Salestax', with: @province.salesTax
+    click_on 'Create Province'
 
-    assert_text "Province was successfully created"
-    click_on "Back"
+    assert_text 'Province was successfully created'
+    click_on 'Back'
   end
 
-  test "should update Province" do
+  test 'should update Province' do
     visit province_url(@province)
-    click_on "Edit this province", match: :first
+    click_on 'Edit this province', match: :first
 
-    fill_in "Abbreviation", with: @province.abbreviation
-    fill_in "Name", with: @province.name
-    fill_in "Salestax", with: @province.salesTax
-    click_on "Update Province"
+    fill_in 'Abbreviation', with: @province.abbreviation
+    fill_in 'Name', with: @province.name
+    fill_in 'Salestax', with: @province.salesTax
+    click_on 'Update Province'
 
-    assert_text "Province was successfully updated"
-    click_on "Back"
+    assert_text 'Province was successfully updated'
+    click_on 'Back'
   end
 
-  test "should destroy Province" do
+  test 'should destroy Province' do
     visit province_url(@province)
-    click_on "Destroy this province", match: :first
+    click_on 'Destroy this province', match: :first
 
-    assert_text "Province was successfully destroyed"
+    assert_text 'Province was successfully destroyed'
   end
 end

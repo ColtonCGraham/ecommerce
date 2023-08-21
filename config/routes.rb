@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -10,16 +12,16 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
 
-  get "sign_up", to: "registrations#new"
+  get 'sign_up', to: 'registrations#new'
 
-  post "sign_up", to: "registrations#create"
+  post 'sign_up', to: 'registrations#create'
 
-  delete "logout", to: "sessions#destroy"
+  delete 'logout', to: 'sessions#destroy'
 
-  get "sign_in", to: "sessions#new"
-  post "sign_in", to: "sessions#create"
+  get 'sign_in', to: 'sessions#new'
+  post 'sign_in', to: 'sessions#create'
 
-  get 'checkout', to: "checkout#new"
+  get 'checkout', to: 'checkout#new'
 
-  root "products#index"
+  root 'products#index'
 end

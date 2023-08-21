@@ -1,11 +1,12 @@
-ActiveAdmin.register Product do
+# frozen_string_literal: true
 
+ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :basePrice, :description,:image, pictures:[]
+  permit_params :name, :basePrice, :description, :image, pictures: []
   #
   # or
   #
@@ -15,14 +16,13 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
-
   form do |f|
     f.semantic_errors # shows errors on :base
     f.inputs do
       f.input :name
       f.input :basePrice
       f.input :description
-      f.input :image, as: :file,multiple: true
+      f.input :image, as: :file, multiple: true
       f.file_field :pictures, as: :file, multiple: true
       f.actions
     end
@@ -41,6 +41,4 @@ ActiveAdmin.register Product do
       end
     end
   end
-
-
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProvincesController < ApplicationController
-  before_action :set_province, only: %i[ show edit update destroy ]
+  before_action :set_province, only: %i[show edit update destroy]
 
   # GET /provinces or /provinces.json
   def index
@@ -7,8 +9,7 @@ class ProvincesController < ApplicationController
   end
 
   # GET /provinces/1 or /provinces/1.json
-  def show
-  end
+  def show; end
 
   # GET /provinces/new
   def new
@@ -17,8 +18,7 @@ class ProvincesController < ApplicationController
   end
 
   # GET /provinces/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /provinces or /provinces.json
   def create
@@ -26,7 +26,7 @@ class ProvincesController < ApplicationController
 
     respond_to do |format|
       if @province.save
-        format.html { redirect_to province_url(@province), notice: "Province was successfully created." }
+        format.html { redirect_to province_url(@province), notice: 'Province was successfully created.' }
         format.json { render :show, status: :created, location: @province }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class ProvincesController < ApplicationController
   def update
     respond_to do |format|
       if @province.update(province_params)
-        format.html { redirect_to province_url(@province), notice: "Province was successfully updated." }
+        format.html { redirect_to province_url(@province), notice: 'Province was successfully updated.' }
         format.json { render :show, status: :ok, location: @province }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +53,21 @@ class ProvincesController < ApplicationController
     @province.destroy
 
     respond_to do |format|
-      format.html { redirect_to provinces_url, notice: "Province was successfully destroyed." }
+      format.html { redirect_to provinces_url, notice: 'Province was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_province
-      @province = Province.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def province_params
-      params.require(:province).permit(:name, :abbreviation, :salesTax, accounts_attributes:[:name, :address, :postalCode,:password])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_province
+    @province = Province.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def province_params
+    params.require(:province).permit(:name, :abbreviation, :salesTax,
+                                     accounts_attributes: %i[name address postalCode password])
+  end
 end
