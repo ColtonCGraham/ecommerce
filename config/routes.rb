@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'sessions#create'
 
   get 'checkout', to: 'checkout#new'
+  post 'checkout', to: 'checkout#create'
+
+  get 'checkout', to: 'checkout#new'
 
   root 'products#index'
 end

@@ -46,33 +46,34 @@
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
-            <form class="needs-validation" novalidate="">
+            <%= form_with url: checkout_path, class: "needs-validation", html: {novalidate: ''} do |form|%>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                        <%= form.text_field :firstName, id: "firstName", class:"form-control" , placeholder: "", required: ""%>
                         <div class="invalid-feedback"> Valid first name is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="">
+                        <%= form.text_field :lastName, id: "lastName", class:"form-control" , placeholder: ""%>
+
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                     <%= form.text_field :email, id: "email", class:"form-control" , placeholder: "you@example.com"%>
                     <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                 </div>
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                    <%= form.text_field :address, id: "address", class:"form-control" , placeholder: "", required: ""%>
                     <div class="invalid-feedback"> Please enter your shipping address. </div>
                 </div>
                 <div>
                     <div class="col-md-3 mb-3">
                         <label for="postal">Postal Code</label>
-                        <input type="text" class="form-control" id="postal" placeholder="" required="">
+                        <%= form.text_field :postal, id: "postal", class:"form-control" , placeholder: "", required: ""%>
                         <div class="invalid-feedback"> Postal code required. </div>
                     </div>
                 </div>
@@ -87,32 +88,32 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                        <%= form.text_field :ccName, id: "ccName", class:"form-control" , placeholder: "", required: ""%>
                         <small class="text-muted">Full name as displayed on card</small>
                         <div class="invalid-feedback"> Name on card is required </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                        <%= form.text_field :cc, id: "cc", class:"form-control" , placeholder: "", required: ""%>
                         <div class="invalid-feedback"> Credit card number is required </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                        <%= form.text_field :expiration, id: "expiration", class:"form-control" , placeholder: "", required: ""%>
                         <small class="text-muted">(MM/YYYY)</small>
                         <div class="invalid-feedback"> Expiration date required </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="cc-cvv">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                        <%= form.text_field :ccv, id: "cc-cvv", class:"form-control" , placeholder: "", required: ""%>
                         <div class="invalid-feedback"> Security code required </div>
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
-            </form>
+                <%= form.submit "Checkout", class: "btn btn-primary btn-lg btn-block" %>
+            <% end %>
         </div>
     </div>
 </div>
