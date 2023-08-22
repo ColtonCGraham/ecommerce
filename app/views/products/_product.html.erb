@@ -3,7 +3,11 @@
 
 <div class="card" style="width: 16rem; margin: 5px;" id="<%= dom_id product %>">
   <div class="card-img-top">
+  <%if product.image.id != nil%>
   <%=link_to image_tag(product.image), product%>
+  <%else%>
+  <%=link_to image_tag("123.png"), product%>
+  <% end %>
   </div>
   <div class="card-body" >
     <h5 class="card-title"><%= product.name %></h5>

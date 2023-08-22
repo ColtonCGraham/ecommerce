@@ -18,6 +18,11 @@ csv_data = File.read(csv_file)
 
 products = CSV.parse(csv_data, headers: true)
 
+csv_file2 = Rails.root.join('db/products2.csv')
+csv_data2 = File.read(csv_file)
+
+productsNoPics = CSV.parse(csv_data2, headers: true)
+
 Account.delete_all
 AdminUser.delete_all
 if Rails.env.development?
@@ -32,4 +37,12 @@ products.each do |product|
                   description: product['Description']+".")
                   p.categories << cat
                   p.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{cat.name}.png"), filename: "123.png")
+end
+
+productsNoPics.each do |product|
+  cat = Category.find_or_create_by(name: product['Category'])
+  p = Product.create!(name: product['Name'],
+                  basePrice: product['Price'],
+                  description: product['Description']+".")
+                  p.categories << cat
 end
