@@ -29,7 +29,7 @@ products.each do |product|
   cat = Category.find_or_create_by(name: product['Category'])
   p = Product.create!(name: product['Name'],
                   basePrice: product['Price'],
-                  description: product['Description'])
+                  description: product['Description']+".")
                   p.categories << cat
                   p.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{cat.name}.png"), filename: "123.png")
 end

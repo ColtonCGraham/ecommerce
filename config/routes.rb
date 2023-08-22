@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'cart',  to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   resources :abouts
   resources :contacts
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -17,6 +20,8 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'registrations#new'
 
   post 'sign_up', to: 'registrations#create'
+
+  post 'products', to: 'products#cart'
 
   delete 'logout', to: 'sessions#destroy'
 

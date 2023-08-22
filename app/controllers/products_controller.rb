@@ -4,9 +4,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   # GET /products or /products.json
-  def index
-    @products = Product.all
-  end
+
+    def index
+      @products = Product.order(:name).page params[:page]
+    end
+
 
   # GET /products/1 or /products/1.json
   def show; end
@@ -18,6 +20,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit; end
+
+  def cart
+    puts params
+  end
 
   # POST /products or /products.json
   def create
