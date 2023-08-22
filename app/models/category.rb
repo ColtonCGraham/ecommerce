@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
-  has_many :categories_product, dependent: :destroy
-  has_many :products, through: :categories_product
+  has_and_belongs_to_many :products
 end
