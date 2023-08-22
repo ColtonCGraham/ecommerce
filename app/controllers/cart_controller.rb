@@ -16,12 +16,12 @@ class CartController < ApplicationController
       @cart.orderables.create(product: @product, quantity:)
     end
 
-    redirect_to root_path
+    redirect_back_or_to root_path
   end
 
   def remove
     Orderable.find_by(id: params[:id]).destroy
 
-    redirect_to root_path
+    redirect_back_or_to root_path
   end
 end

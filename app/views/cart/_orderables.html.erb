@@ -1,22 +1,28 @@
 <% @cart.orderables.each do |orderable|%>
   <% product = orderable.product%>
 
-  <div>
+  <div  class="border border-primary", style = "width: 300px">
+
     <%= product.name %>
     <h5 > $<%= product.basePrice %></h5>
     <p ><%= product.description %></p>
+    <div  style = "float: left; margin-left: 15px;">
     <%= form_with(url: cart_add_path) do |f|%>
       <%= f.hidden_field :id, value: product.id%>
-      <%= f.number_field :quantity, value: orderable.quantity, min: 0 %>
-      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      <%= f.number_field :quantity, value: orderable.quantity, min: 0, style: "width: 50px" %>
+      <%= f.submit "Adjust", class: "btn btn-primary" %>
     <% end %>
+    </div>
 
     <%= form_with(url: cart_remove_path) do |f|%>
       <%= f.hidden_field :id, value: orderable.id%>
-      <%= f.submit "X", class: "btn btn-primary" %>
+      <div style = "margin-left: 150px">
+      <%= f.submit "X", class: "btn btn-primary"%>
     <% end %>
-
-    <%= orderable.total%>
+    </div>
+    <h3>
+    $<%= orderable.total%>
+    </h3>
 </div>
 
 

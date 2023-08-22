@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   paginates_per 25
   has_many :orderables
   has_many :carts, through: :orderables
+  accepts_nested_attributes_for :categories
 end
