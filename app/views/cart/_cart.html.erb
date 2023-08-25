@@ -4,7 +4,7 @@
   <% @cart.orderables.each do |o| %>
     <%c+=o.quantity%>
   <% end %>
-  <h3>  <%= link_to "Checkout (#{ c })", checkout_path , class: "btn btn-primary"  %></h3>
+  <%= link_to "Checkout (#{ c })", checkout_path , class: "btn btn-primary"  %>
 
 </div>
 <% end %>

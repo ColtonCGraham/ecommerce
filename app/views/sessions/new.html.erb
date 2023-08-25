@@ -1,5 +1,9 @@
 <h1>Sign In </h1>
 <p style="color: red"><%= flash[:alert] %></p>
+
+<div class = "m-3">
+  <h4>Don't have an account? <%= link_to "Sign Up",  sign_up_path%> here.</h4>
+</div>
 <%= form_with url: sign_in_path do |form|%>
 
 <div class ="m-3">

@@ -13,6 +13,12 @@ class ProductsController < ApplicationController
   # GET /products/1 or /products/1.json
   def show; end
 
+  def search
+    puts params[:post]
+
+    @products = Product.where('products.name LIKE ?', '%' + params[:q] + '%').joins(:categories).where('categories.id = 6')
+  end
+
   # GET /products/new
   def new
     @product = Product.new

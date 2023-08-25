@@ -32,6 +32,6 @@ Rails.application.routes.draw do
   post 'checkout', to: 'checkout#create'
 
   get 'checkout', to: 'checkout#new'
-
+  get 'searchproducts', to: 'products#search'
   root 'products#index'
 end

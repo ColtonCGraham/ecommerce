@@ -1,0 +1,24 @@
+
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Search Results</h1>
+
+<div class = "container" , class = "m-3">
+<div class="row mt-3"  id="products">
+  <% @products.each do |product| %>
+    <%= render product %>
+  <% end %>
+</div>
+</div>
+
+ <script>
+ function handler(){
+  drop = document.getElementById("post_person_id").value;
+
+    drop ="/searchproducts";
+
+  document.getElementById("f").action = drop;
+  console.log(drop);
+ }
+</script>

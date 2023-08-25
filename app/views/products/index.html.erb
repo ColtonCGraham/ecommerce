@@ -1,7 +1,6 @@
     <%
      searchType = [
-    "/searchplayers",
-    "/searchteams"
+    "/searchproducts",
      ]
     %>
 
@@ -15,7 +14,8 @@
 
         <form id = "f" action = <%=searchType[0]%>>
           <input text ="text" name = "q" placeholder = "Search Category" aria-label = "Search">
-          <%= select("post", "person_id",["All","Players","Teams"],{},:onChange=>"handler();") %>
+          <%= select("post", "cat_id", Category.all.collect {|c| [ c.name, c.id ] },{prompt: "All" },:onChange=>"handler();") %>
+
           <button type = "submit"> Search </button>
         </form>
 
@@ -32,17 +32,8 @@
 
  <script>
  function handler(){
-  drop = document.getElementById("post_person_id").value;
-  if(drop == "Teams"){
-    drop ="/searchteams";
-  }
-  if(drop == "Players"){
-    drop ="/searchplayers";
-  }
-   if(drop == "Players"){
-    drop ="/searchall";
-  }
-  document.getElementById("f").action = drop;
+  drop = document.getElementById("post_cat_id").value;
+
   console.log(drop);
  }
 </script>
