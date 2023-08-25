@@ -1,8 +1,24 @@
+    <%
+     searchType = [
+    "/searchplayers",
+    "/searchteams"
+     ]
+    %>
+
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Products</h1>
 
 <%= will_paginate @products, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+
+        <form id = "f" action = <%=searchType[0]%>>
+          <input text ="text" name = "q" placeholder = "Search Category" aria-label = "Search">
+          <%= select("post", "person_id",["All","Players","Teams"],{},:onChange=>"handler();") %>
+          <button type = "submit"> Search </button>
+        </form>
+
 
 <div class = "container" , class = "m-3">
 <div class="row mt-3"  id="products">
@@ -12,3 +28,21 @@
 </div>
 </div>
 <%= link_to "New product", new_product_path %>
+
+
+ <script>
+ function handler(){
+  drop = document.getElementById("post_person_id").value;
+  if(drop == "Teams"){
+    drop ="/searchteams";
+  }
+  if(drop == "Players"){
+    drop ="/searchplayers";
+  }
+   if(drop == "Players"){
+    drop ="/searchall";
+  }
+  document.getElementById("f").action = drop;
+  console.log(drop);
+ }
+</script>

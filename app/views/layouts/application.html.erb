@@ -12,7 +12,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
@@ -25,25 +24,35 @@
 <%="Login"%>
 <%end%>
 
-<nav class="navbar bg-light">
-  <form class="container-fluid">
-    <div class="input-group">
-      <span class="input-group-text" id="basic-addon1">@</span>
-      <%if @account %>
-      <%= @account.name%>
-         <%n = "Hello " + @account.name + "!"%>
-        <% else
-        n = 'Make an account to begin shopping!'
-        %>
-      <%end%>
-      <input type="text" class="form-control" placeholder= "<%=n%>" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
-  </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="products">Products <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item px-2">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+          <li class="nav-item px-2">
+            <%if @account %>
+              <%= button_to "Logout",  logout_path, method: :delete,  class: "btn btn-primary"%>
+              <%else%>
+               <%= link_to "Log In",  sign_in_path,  class: "btn btn-primary"%>
+            <%end%>
+          </li>
+      </li>
+      <li class="nav-item px-2">
+          <%= render partial: "cart/cart" if @render_cart%>
+      </li>
+    </ul>
+  </div>
 </nav>
-
-  <%= render partial: "cart/cart" if @render_cart%>
-
-    <%= yield %>
+  <%= yield %>
   </body>
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">© 2017-2019 Company Name</p>
@@ -53,4 +62,25 @@
             <li class="list-inline-item"><a href="#">Support</a></li>
         </ul>
     </footer>
+
+
+
+ <script>
+ function handler(){
+  drop = document.getElementById("post_person_id").value;
+  if(drop == "Teams"){
+    drop ="/searchteams";
+  }
+  if(drop == "Players"){
+    drop ="/searchplayers";
+  }
+   if(drop == "Players"){
+    drop ="/searchall";
+  }
+  document.getElementById("f").action = drop;
+  console.log(drop);
+ }
+</script>
 </html>
+
+

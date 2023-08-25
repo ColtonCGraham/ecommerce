@@ -2,8 +2,7 @@
   <% product = orderable.product%>
 
   <div  class="border border-primary", style = "width: 300px">
-
-    <%= product.name %>
+    <h5><%=link_to product.name, product%></h5>
     <h5 > $<%= product.basePrice %></h5>
     <p ><%= product.description %></p>
     <div  style = "float: left; margin-left: 15px;">
