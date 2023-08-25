@@ -14,9 +14,14 @@ class ProductsController < ApplicationController
   def show; end
 
   def search
-    puts params[:post]
 
-    @products = Product.where('products.name LIKE ?', '%' + params[:q] + '%').joins(:categories).where('categories.id = 6')
+    p = params[:post].values.first
+
+    if (p != '')
+    @products = Product.where('products.name LIKE ?', '%' + params[:q] + '%').joins(:categories).where('categories.id = ?', p)
+    else
+    @products = Product.where('name LIKE ?', '%' + params[:q] + '%')
+    end
   end
 
   # GET /products/new

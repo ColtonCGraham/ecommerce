@@ -23,11 +23,11 @@ csv_data2 = File.read(csv_file2)
 productsNoPics = CSV.parse(csv_data2, headers: true)
 
 #Account.delete_all
-#AdminUser.delete_all
-#if Rails.env.development?
-#  AdminUser.create!(email: 'admin@example.com', password: 'password',
-#                    password_confirmation: 'password')
-#end
+AdminUser.delete_all
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end
 
 products.each do |product|
   cat = Category.find_or_create_by(name: product['Category'])
