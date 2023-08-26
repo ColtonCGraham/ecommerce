@@ -88,5 +88,5 @@ group :test do
 end
 
 gem 'cssbundling-rails', '~> 1.2'
-gem 'will_paginate-bootstrap4'
 gem 'jsbundling-rails', '~> 1.1'
+gem 'will_paginate-bootstrap4'

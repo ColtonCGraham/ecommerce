@@ -5,23 +5,68 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
 
-    def index
-      @products = Product.order(:name).page params[:page]
-    end
-
+  def index
+    @products = Product.order(:name).page params[:page]
+  end
 
   # GET /products/1 or /products/1.json
   def show; end
 
   def search
-
     p = params[:post].values.first
 
-    if (p != '')
-    @products = Product.where('products.name LIKE ?', '%' + params[:q] + '%').joins(:categories).where('categories.id = ?', p)
-    else
-    @products = Product.where('name LIKE ?', '%' + params[:q] + '%')
-    end
+    @products = if p == ''
+                  Product.where('name LIKE ?', "%#{params[:q]}%")
+                else
+                  Product.where('products.name LIKE ?', "%#{params[:q]}%").joins(:categories).where(
+                    'categories.id = ?', p
+                  )
+                end
+  end
+
+  def warhammer
+    p = Category.find_by(name: 'Warhammer')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def terrain
+    p = Category.find_by(name: 'Terrain')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def printing
+    p = Category.find_by(name: '3D Printing')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def supplies
+    p = Category.find_by(name: 'Supplies')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def dnd
+    p = Category.find_by(name: 'DnD')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
   end
 
   # GET /products/new

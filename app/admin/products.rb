@@ -6,7 +6,7 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :basePrice, :description, :image, :category_id, :categories,pictures: []
+  permit_params :name, :basePrice, :description, :image, :category_id, :categories, pictures: [], category_ids: []
   #
   # or
   #
@@ -22,15 +22,13 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :basePrice
       f.input :description
+      f.input :categories, :as => :check_boxes
       f.input :image, as: :file, multiple: true
-      f.file_field :pictures, as: :file, multiple: true
+     # f.file_field :pictures, as: :file, multiple: true
+      f.actions
     end
-    f.has_many :categories do |c|
-      c.inputs "Categories" do
-        c.input :name
-      end
-    end
-    f.actions
+
+
   end
 
   show do
@@ -38,6 +36,11 @@ ActiveAdmin.register Product do
       row :name
       row :basePrice
       row :description
+      table_for product.categories.order('name ASC') do
+        column "Categories" do |category|
+          link_to category.name, [ :admin, category ]
+        end
+      end
     end
   end
 end

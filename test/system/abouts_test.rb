@@ -1,43 +1,45 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class AboutsTest < ApplicationSystemTestCase
   setup do
     @about = abouts(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit abouts_url
-    assert_selector "h1", text: "Abouts"
+    assert_selector 'h1', text: 'Abouts'
   end
 
-  test "should create about" do
+  test 'should create about' do
     visit abouts_url
-    click_on "New about"
+    click_on 'New about'
 
-    fill_in "Content", with: @about.content
-    fill_in "Name", with: @about.name
-    click_on "Create About"
+    fill_in 'Content', with: @about.content
+    fill_in 'Name', with: @about.name
+    click_on 'Create About'
 
-    assert_text "About was successfully created"
-    click_on "Back"
+    assert_text 'About was successfully created'
+    click_on 'Back'
   end
 
-  test "should update About" do
+  test 'should update About' do
     visit about_url(@about)
-    click_on "Edit this about", match: :first
+    click_on 'Edit this about', match: :first
 
-    fill_in "Content", with: @about.content
-    fill_in "Name", with: @about.name
-    click_on "Update About"
+    fill_in 'Content', with: @about.content
+    fill_in 'Name', with: @about.name
+    click_on 'Update About'
 
-    assert_text "About was successfully updated"
-    click_on "Back"
+    assert_text 'About was successfully updated'
+    click_on 'Back'
   end
 
-  test "should destroy About" do
+  test 'should destroy About' do
     visit about_url(@about)
-    click_on "Destroy this about", match: :first
+    click_on 'Destroy this about', match: :first
 
-    assert_text "About was successfully destroyed"
+    assert_text 'About was successfully destroyed'
   end
 end

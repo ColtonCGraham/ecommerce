@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'cart',  to: 'cart#show'
+  get 'cart', to: 'cart#show'
   post 'cart/add'
   post 'cart/remove'
   resources :abouts
@@ -34,4 +34,11 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkout#new'
   get 'searchproducts', to: 'products#search'
   root 'products#index'
+
+
+  get 'warhammer', to: 'products#warhammer'
+  get 'printing', to: 'products#printing'
+  get 'dnd', to: 'products#dnd'
+  get 'terrain', to: 'products#terrain'
+  get 'supplies', to: 'products#supplies'
 end

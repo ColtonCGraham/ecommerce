@@ -1,9 +1,9 @@
-class ContactsController < InheritedResources::Base
+# frozen_string_literal: true
 
+class ContactsController < InheritedResources::Base
   private
 
-    def contact_params
-      params.require(:contact).permit(:name, :address, :content, :email, :phone)
-    end
-
+  def contact_params
+    params.require(:contact).permit(:name, :address, :content, :email, :phone)
+  end
 end
