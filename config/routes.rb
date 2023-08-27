@@ -43,4 +43,7 @@ Rails.application.routes.draw do
   get 'supplies', to: 'products#supplies'
   get 'sale', to: 'products#sale'
   get 'new_items', to: 'products#new_items'
+
+  get 'about', to: 'abouts#show'
+  get 'contact', to: 'contacts#show'
 end

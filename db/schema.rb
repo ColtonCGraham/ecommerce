@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_22_042054) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_27_032136) do
   create_table "abouts", force: :cascade do |t|
     t.string "name"
     t.text "content"
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_042054) do
     t.datetime "updated_at", null: false
     t.integer "province_id", null: false
     t.integer "order_id"
+    t.string "email"
     t.index ["order_id"], name: "index_accounts_on_order_id"
     t.index ["province_id"], name: "index_accounts_on_province_id"
   end

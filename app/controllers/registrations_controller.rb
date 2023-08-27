@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
     p = Province.find(params.dig(:province, :provinceId))
 
     accDetails = params.dig(:province, :account)
-    @account = Account.new(name: accDetails[:name], password: accDetails[:password],
+    @account = Account.new(name: accDetails[:name], password: accDetails[:password], address: accDetails[:address],email: accDetails[:email],
                            postalCode: accDetails[:postalCode], province: p)
     p.accounts << @account
 

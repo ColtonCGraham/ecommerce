@@ -6,7 +6,7 @@ ActiveAdmin.register Contact do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :address, :content, :email, :phone
+permit_params :name, :address, :content, :email, :phone
   #
   # or
   #

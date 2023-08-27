@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <%= form.text_field :firstName, id: "firstName", class:"form-control" , placeholder: "", required: ""%>
+                        <%= form.text_field :firstName, id: "firstName", class:"form-control" , placeholder: "", required: "", value: @account.name%>
                         <div class="invalid-feedback"> Valid first name is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -44,18 +44,18 @@
 
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                     <%= form.text_field :email, id: "email", class:"form-control" , placeholder: "you@example.com"%>
+                     <%= form.text_field :email, id: "email", class:"form-control" , placeholder: "you@example.com", value: @account.email %>
                     <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                 </div>
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <%= form.text_field :address, id: "address", class:"form-control" , placeholder: "", required: ""%>
+                    <%= form.text_field :address, id: "address", class:"form-control" , placeholder: "", required: "", value: @account.address%>
                     <div class="invalid-feedback"> Please enter your shipping address. </div>
                 </div>
                 <div>
                     <div class="col-md-3 mb-3">
                         <label for="postal">Postal Code</label>
-                        <%= form.text_field :postal, id: "postal", class:"form-control" , placeholder: "", required: ""%>
+                        <%= form.text_field :postal, id: "postal", class:"form-control" , placeholder: "", required: "", value: @account.postalCode%>
                         <div class="invalid-feedback"> Postal code required. </div>
                     </div>
                 </div>
