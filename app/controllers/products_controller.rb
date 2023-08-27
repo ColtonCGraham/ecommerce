@@ -73,10 +73,8 @@ class ProductsController < ApplicationController
   end
 
   def new_items
-    p = Category.find_by(name: 'DnD')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+
+    @products = Product.where(:created_at => (Date.today - 1.days)..Date.today).order(:name).page params[:page]
 
   render :template => 'products/index'
   end
