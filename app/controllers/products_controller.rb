@@ -16,12 +16,15 @@ class ProductsController < ApplicationController
     p = params[:post].values.first
 
     @products = if p == ''
-                  Product.where('name LIKE ?', "%#{params[:q]}%")
+                  Product.where('name LIKE ?', "%#{params[:q]}%").order(:name).page params[:page]
                 else
                   Product.where('products.name LIKE ?', "%#{params[:q]}%").joins(:categories).where(
                     'categories.id = ?', p
-                  )
+                  ).order(:name).page params[:page]
                 end
+
+
+    render :template => 'products/index'
   end
 
   def warhammer
@@ -65,6 +68,24 @@ class ProductsController < ApplicationController
   @products = Product.joins(:categories).where(
     'categories.id = ?', p
   ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def new_items
+    p = Category.find_by(name: 'DnD')
+  @products = Product.joins(:categories).where(
+    'categories.id = ?', p
+  ).order(:name).page params[:page]
+
+  render :template => 'products/index'
+  end
+
+  def sale
+
+   @products = Product.where(
+      'sale_id != 4'
+    ).order(:name).page params[:page]
 
   render :template => 'products/index'
   end

@@ -5,6 +5,6 @@ class Orderable < ApplicationRecord
   belongs_to :cart
 
   def total
-    product.basePrice * quantity
+    product.price * quantity
   end
 end

@@ -3,7 +3,14 @@
 
   <div  class="border border-primary", style = "width: 300px">
     <h5><%=link_to product.name, product%></h5>
-    <h5 > $<%= product.basePrice %></h5>
+    <h5 class="card-title"><%= product.name %></h5>
+    <%if product.onSale%>
+    <h5 class="card-title" style="color: green">
+     $<%=product.price %> $<span style = "text-decoration: line-through"><%=product.basePrice%></span>
+    <%else%>
+    <h5 class="card-title"> $<%= product.price %>
+    <% end %>
+   </h5>
     <p ><%= product.description %></p>
     <div  style = "float: left; margin-left: 15px;">
     <%= form_with(url: cart_add_path) do |f|%>

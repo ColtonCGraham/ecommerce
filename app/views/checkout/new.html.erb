@@ -11,7 +11,15 @@
                 <% if @cart.orderables.count > 0%>
                 <%= render "cart/orderables"%>
                 <br>
-                <h1>Total: $<%= @cart.total %></h1>
+                <%
+                g = ((@cart.total )* 0.05).round(2)
+                p = ((@cart.total ) * (@account.province.salesTax * 0.01)).round(2)
+                grand = (@cart.total + g + p).round(2)
+                %>
+                <h2>Sub-Total: $<%= @cart.total%></h2>
+                <h4>GST: $<%= g  %></h4>
+                <h4>PST: $<%= p  %></h4>
+                <h1>Grand Total: $<%= grand %></h1>
                 <%else%>
                 <p>Cart is Empty</p>
                 <% end %>
@@ -19,6 +27,9 @@
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
             <%= form_with url: checkout_path, class: "needs-validation", html: {novalidate: ''} do |form|%>
+                <%= form.hidden_field :gst, value: g %>
+                <%= form.hidden_field :pst, value: p %>
+                <%= form.hidden_field :subtotal, value: @cart.total %>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
@@ -28,7 +39,6 @@
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name <span class="text-muted">(Optional)</span></label>
                         <%= form.text_field :lastName, id: "lastName", class:"form-control" , placeholder: ""%>
-
                     </div>
                 </div>
 
