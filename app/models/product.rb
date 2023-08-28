@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   end
 
   def onSale
-    if sale !=nil && sale.name != 'Not on Sale'
+    if sale !=nil && sale.name != 'Not On Sale'
        return true
     else
      return  false

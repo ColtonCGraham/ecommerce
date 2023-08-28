@@ -6,7 +6,7 @@ ActiveAdmin.register Order do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :orderStatus, :orderNote, :savedPrice, :order_item_id
+  permit_params :orderStatus, :orderNote, :savedPrice, :order_item_id, :email, :address,:postal,:credit
   #
   # or
   #

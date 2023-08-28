@@ -63,6 +63,12 @@
 <div class = "m-3" style = "display:inline-block; float:left">
             <%= render partial: "cart/cart" if @render_cart%>
             </div>
+
+<div class = "m-3" style = "display:inline-block; float:left">
+  <%if @account %>
+              <%= button_to "Account",  logout_path, method: :delete,  class: "btn btn-primary"%>
+            <%end%>
+            </div>
   <%= yield %>
   </body>
       <footer class="my-5 pt-5 text-muted text-center text-small">

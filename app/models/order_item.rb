@@ -2,5 +2,5 @@
 
 class OrderItem < ApplicationRecord
   has_one :product
-  belongs_to :order
+  belongs_to :order, optional: true
 end

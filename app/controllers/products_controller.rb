@@ -74,7 +74,7 @@ class ProductsController < ApplicationController
 
   def new_items
 
-    @products = Product.where(:created_at => (Date.today - 1.days)..Date.today).order(:name).page params[:page]
+    @products = Product.where(:created_at => (Date.today - 3.days)..Date.today+1).order(:name).page params[:page]
 
   render :template => 'products/index'
   end
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
   def sale
 
    @products = Product.where(
-      'sale_id != 4'
+      'sale_id != 1'
     ).order(:name).page params[:page]
 
   render :template => 'products/index'
@@ -149,4 +149,6 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :basePrice, :description, :image, pictures: [])
   end
+
+
 end
