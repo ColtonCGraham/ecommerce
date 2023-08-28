@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_012907) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_030022) do
   create_table "abouts", force: :cascade do |t|
     t.string "name"
     t.text "content"
@@ -150,6 +150,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_012907) do
     t.string "postalCode"
     t.string "email"
     t.integer "account_id"
+    t.float "subTotal"
+    t.float "grandTotal"
+    t.float "gst"
+    t.float "pst"
     t.index ["account_id"], name: "index_orders_on_account_id"
   end
 

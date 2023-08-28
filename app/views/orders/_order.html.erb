@@ -1,17 +1,31 @@
-<div id="<%= dom_id order %>">
+<div id="<%= dom_id order %>" class="border border-primary, m-3" style= "width: 500px">
+<h1>Order Id: <%=order.id%></h1>
   <p>
     <strong>Orderstatus:</strong>
     <%= order.orderStatus %>
   </p>
+    <p>
+    <strong>Ship To:</strong>
+    <%= @account.name %> <br>
+    <%=order.address%>  <%=order.postalCode%>
+    <br> <%=@account.province.name%>
+  </p>
+    <p>
+    <strong>Payment Information:</strong>
 
-  <p>
-    <strong>Ordernote:</strong>
-    <%= order.orderNote %>
+    <p>Credit Card: <%= order.credit %> </p>
   </p>
 
-  <p>
-    <strong>Savedprice:</strong>
-    <%= order.savedPrice %>
+      <p>
+    <strong>Contents:</strong>
   </p>
+      <%order.order_items.each do |o|%>
+      <p> <%=o.product.name%> -- <%=o.quantity%> X <%= o.price%> = $<%= o.price * o.quantity %></p>
 
+     <%end%>
+
+  <h4>Sub Total: $<%=order.subTotal%></h4>
+  <h6>GST: $<%= order.gst%></h6>
+  <h6>PST: $<%=order.pst%></h6>
+  <h2>Grand Total: $<%=order.grandTotal%></h2>
 </div>

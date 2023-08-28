@@ -16,7 +16,7 @@
                 p = ((@cart.total ) * (@account.province.salesTax * 0.01)).round(2)
                 grand = (@cart.total + g + p).round(2)
                 %>
-                <h2>Sub-Total: $<%= @cart.total%></h2>
+                <h2>Sub-Total: $<%= @cart.total.round(2)%></h2>
                 <h4>GST: $<%= g  %></h4>
                 <h4>PST: $<%= p  %></h4>
                 <h1>Grand Total: $<%= grand %></h1>
@@ -30,6 +30,7 @@
                 <%= form.hidden_field :gst, value: g %>
                 <%= form.hidden_field :pst, value: p %>
                 <%= form.hidden_field :subtotal, value: @cart.total %>
+                <%= form.hidden_field :grandtotal, value: grand %>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>

@@ -46,4 +46,5 @@ Rails.application.routes.draw do
 
   get 'about', to: 'abouts#show'
   get 'contact', to: 'contacts#show'
+  get 'account', to: 'orders#index'
 end

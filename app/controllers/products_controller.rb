@@ -74,7 +74,7 @@ class ProductsController < ApplicationController
 
   def new_items
 
-    @products = Product.where(:created_at => (Date.today - 3.days)..Date.today+1).order(:name).page params[:page]
+    @products = Product.where(:created_at => (Date.today - 2.days)..Date.today+1).order(:name).page params[:page]
 
   render :template => 'products/index'
   end

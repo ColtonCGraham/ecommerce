@@ -6,7 +6,7 @@ ActiveAdmin.register OrderItem do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :price, :quantity
+  permit_params :price, :quantity, :product_id
   #
   # or
   #

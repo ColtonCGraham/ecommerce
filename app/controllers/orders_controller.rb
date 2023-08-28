@@ -5,7 +5,14 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    if session[:accountId]
+      @account = Account.find_by(id: session[:accountId])
+    else
+      @account = nil
+      redirect_to sign_in_path, alert: 'Log in before accessing your profile.'
+    end
+
+    @orders = @account.orders
   end
 
   # GET /orders/1 or /orders/1.json
