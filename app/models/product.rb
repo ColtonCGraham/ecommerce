@@ -10,6 +10,10 @@ class Product < ApplicationRecord
   has_many :carts, through: :orderables
   accepts_nested_attributes_for :categories
 
+  validates :basePrice, numericality: true
+  validates :basePrice, presence: true
+  validates :name, presence: true
+
   def price
     if sale.nil?
       basePrice
