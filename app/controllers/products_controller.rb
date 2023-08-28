@@ -23,69 +23,66 @@ class ProductsController < ApplicationController
                   ).order(:name).page params[:page]
                 end
 
-
-    render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def warhammer
     p = Category.find_by(name: 'Warhammer')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+    @products = Product.joins(:categories).where(
+      'categories.id = ?', p
+    ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def terrain
     p = Category.find_by(name: 'Terrain')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+    @products = Product.joins(:categories).where(
+      'categories.id = ?', p
+    ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def printing
     p = Category.find_by(name: '3D Printing')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+    @products = Product.joins(:categories).where(
+      'categories.id = ?', p
+    ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def supplies
     p = Category.find_by(name: 'Supplies')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+    @products = Product.joins(:categories).where(
+      'categories.id = ?', p
+    ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def dnd
     p = Category.find_by(name: 'DnD')
-  @products = Product.joins(:categories).where(
-    'categories.id = ?', p
-  ).order(:name).page params[:page]
+    @products = Product.joins(:categories).where(
+      'categories.id = ?', p
+    ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def new_items
+    @products = Product.where(created_at: (Date.today - 2.days)..Date.today + 1).order(:name).page params[:page]
 
-    @products = Product.where(:created_at => (Date.today - 2.days)..Date.today+1).order(:name).page params[:page]
-
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   def sale
-
-   @products = Product.where(
+    @products = Product.where(
       'sale_id != 1'
     ).order(:name).page params[:page]
 
-  render :template => 'products/index'
+    render template: 'products/index'
   end
 
   # GET /products/new
@@ -149,6 +146,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :basePrice, :description, :image, pictures: [])
   end
-
-
 end

@@ -31,21 +31,21 @@ end
 
 products.each do |product|
   cat = Category.find_or_create_by(name: product['Category'])
-  sale = Sale.find_or_create_by(name: "Not On Sale", percentOff: 0)
+  sale = Sale.find_or_create_by(name: 'Not On Sale', percentOff: 0)
   p = Product.create!(name: product['Name'],
                       basePrice: product['Price'],
                       description: "#{product['Description']}.",
-                      sale: sale)
+                      sale:)
   p.categories << cat
   p.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{cat.name}.png"), filename: '123.png')
 end
 
 productsNoPics.each do |product|
   cat = Category.find_or_create_by(name: product['Category'])
-  sale = Sale.find_or_create_by(name: "Not On Sale", percentOff: 0)
+  sale = Sale.find_or_create_by(name: 'Not On Sale', percentOff: 0)
   p = Product.create!(name: product['Name'],
                       basePrice: product['Price'],
                       description: "#{product['Description']}.",
-                      sale: sale)
+                      sale:)
   p.categories << cat
 end

@@ -11,18 +11,14 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :categories
 
   def price
-    if sale !=nil
-       return (basePrice - (basePrice*(sale.percentOff*0.01))).truncate(2)
+    if sale.nil?
+      basePrice
     else
-     return  basePrice
+      (basePrice - (basePrice * (sale.percentOff * 0.01))).truncate(2)
     end
   end
 
   def onSale
-    if sale !=nil && sale.name != 'Not On Sale'
-       return true
-    else
-     return  false
-    end
+    !sale.nil? && sale.name != 'Not On Sale'
   end
 end

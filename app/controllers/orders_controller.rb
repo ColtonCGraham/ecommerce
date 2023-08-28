@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       redirect_to sign_in_path, alert: 'Log in before accessing your profile.'
     end
 
-    @orders = @account.orders
+    @orders = @account.orders.order(created_at: :desc)
   end
 
   # GET /orders/1 or /orders/1.json
